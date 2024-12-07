@@ -2,7 +2,7 @@ import os
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 weights_path = os.path.join(current_dir, "../models/weights.pkl")
-accuracy_path = os.path.join(current_dir, "../.metas/accuracy.png")
+accuracy_path = os.path.join(current_dir, "../.metas/acc.png")
 
 """
 出现超过或等于10次的疑问词分类

@@ -231,7 +231,7 @@ $$
 
 重排后，再选出score最高的候选问题。参数buff取多大合适呢？对于用户问题集UserQuestions，绘制不同buff取值下的问题判断准确率如下：
 
-![alt text](.metas\accuracy.png)
+![alt text](.metas\acc.png)
 
 buff取值在区间 [0.20, 0.68] 之间时，准确率等于1。本项目直接取0.4作为buff的最终取值。
 
