@@ -36,9 +36,9 @@ project/
 │   └── read_xlsx.py  # 读取excel文件
 │
 ├── models/  # 存储模型权值文件
-│   └── Dmeta-embedding-zh/..  # Dmeta模型
-│   └── gte-base-zh/..  # Gte模型
-│   └── stella-base-zh-v2/..  # Stella模型
+│   └── Dmeta-embedding-zh/..  # Dmeta模型，自行下载
+│   └── gte-base-zh/..  # Gte模型，自行下载
+│   └── stella-base-zh-v2/..  # Stella模型，自行下载
 │   └── weights.pkl  # 各模型相似度权重
 │
 ├── service/  # 主要业务
