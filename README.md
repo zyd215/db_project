@@ -18,7 +18,7 @@ project/
 │   └── ratings.xlsx   # 各向量模型在用户问题的评分
 │   └── test.xlsx  # 测试数据
 │   └── user_ques.xlsx   # 各向量模型在用户问题的评分
-│   └── word_count.xlsx   # 各向量模型在用户问题的评分
+│   └── word_count.xlsx   # 常见分词词频统计
 │
 ├── import_sql/  # 处理raw data并导入数据库
 │   └── embedding.py  # 向量映射
