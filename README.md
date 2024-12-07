@@ -114,7 +114,7 @@ CREATE TABLE "Test"(
 
 $\textbf{写在前头}$：各向量模型的预设应用场景不一定完全契合本问题，模型评分结果不一定能全面客观地说明模型好坏，仅供参考。
 
-借助[MTEB](https://huggingface.co/spaces/mteb/leaderboard)中文预训练向量模型的评分排名，本文选取了映射维度为768的排名前三的不同模型模型，分别为[Dmeta-embedding-zh](https://huggingface.co/DMetaSoul/Dmeta-embedding-zh)、[gte-base-zh](https://huggingface.co/thenlper/gte-base-zh)和[stella-base-zh-v2](https://huggingface.co/infgrad/stella-base-zh-v2)。可点击链接下载到model目录。本文通过计算两文本向量化结果的余弦相似度量化两文本的相似度，公式如下：
+借助[MTEB](https://huggingface.co/spaces/mteb/leaderboard)中文预训练向量模型的评分排名，本文选取了映射维度为768的排名前三的不同模型模型，分别为[Dmeta-embedding-zh](https://huggingface.co/DMetaSoul/Dmeta-embedding-zh)、[gte-base-zh](https://huggingface.co/thenlper/gte-base-zh)和[stella-base-zh-v2](https://huggingface.co/infgrad/stella-base-zh-v2)。可点击链接下载到models目录。本文通过计算两文本向量化结果的余弦相似度量化两文本的相似度，公式如下：
 
 $$ Similarity = \frac{\vec{v_a} \cdot \vec{v_b}}{\| \vec{v_a} \| \| \vec{v_b} \|} $$
 
