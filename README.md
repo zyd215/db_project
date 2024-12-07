@@ -171,7 +171,7 @@ $$
 
 $$ simi(v_0, v_1) = weight_{Stella} * simi_{Stella}(v_0, v_1) + weight_{Gte} * simi_{Gte}(v_0, v_1) + weight_{Dmeta} * simi_{Dmeta}(v_0, v_1) $$
 
-其中，$v_0$表示用户问题向量化结果，$v_1$表示数据集问题向量化结果，$weight_{Stella}$表示Stella模型相似度所占权重，$simi_{Stella}(v_0, v_1)$表示Stella模型计算所得相似度（其他变量同理）。权重weight如何计算呢？根据之前计算的ratings的比较，主要分为以下三种情况：
+其中，$v_0$ 表示用户问题向量化结果，$v_1$ 表示数据集问题向量化结果，$weight_{Stella}$ 表示Stella模型相似度所占权重，$simi_{Stella}(v_0, v_1)$ 表示Stella模型计算所得相似度（其他变量同理）。权重weight如何计算呢？根据之前计算的ratings的比较，主要分为以下三种情况：
 
 1、当三个模型对于一个用户问题的判断均正确时，假定$rating_{i, Stella} < rating_{i, Gte} < rating_{i, Dmeta}$（i表示第i个用户问题）,则有（其他情况同理）
 
