@@ -116,7 +116,7 @@ $\textbf{写在前头}$：各向量模型的预设应用场景不一定完全契
 
 借助[MTEB](https://huggingface.co/spaces/mteb/leaderboard)中文预训练向量模型的评分排名，本文选取了映射维度为768的排名前三的不同模型模型，分别为[Dmeta-embedding-zh](https://huggingface.co/DMetaSoul/Dmeta-embedding-zh)、[gte-base-zh](https://huggingface.co/thenlper/gte-base-zh)和[stella-base-zh-v2](https://huggingface.co/infgrad/stella-base-zh-v2)。可点击蓝字链接在模型官网下载到models目录。本文通过计算两文本向量化结果的余弦相似度量化两文本的相似度，公式如下：
 
-$$ similarity = \frac{\vec{v_a} \cdot \vec{v_b}}{\| \vec{v_a} \| \| \vec{v_b} \|} $$
+$$ sim = \frac{\vec{v_a} \cdot \vec{v_b}}{\| \vec{v_a} \| \| \vec{v_b} \|} $$
 
 模型能否正确找出用户问题所对应的题库问题？这需要通过自定义数据集进行测试，可通过在[trial数据集](project\data\cmrc2018_trial.json)基础上修改语序、变换问法、多问句结合完成。示例如下：
 
@@ -168,9 +168,9 @@ $$
 
 当前需要做的工作就是在向量化模型的判断基础上，结合问句类型加以判断最符合用户问题的问句。主要分为模型融合和重排模型两部分。对于前者，本文的思想是根据上一节的评分进行初排，用户问题相似度和trial数据集问题的相似度计算公式如下：
 
-$$ simi(v_0, v_1) = weight_{Stella} * simi_{Stella}(v_0, v_1) + weight_{Gte} * simi_{Gte}(v_0, v_1) + weight_{Dmeta} * simi_{Dmeta}(v_0, v_1) $$
+$$ sim(v_0, v_1) = weight_{Stella} * sim_{Stella}(v_0, v_1) + weight_{Gte} * sim_{Gte}(v_0, v_1) + weight_{Dmeta} * sim_{Dmeta}(v_0, v_1) $$
 
-其中，$v_0$ 表示用户问题向量化结果，$v_1$ 表示数据集问题向量化结果，$weight_{Stella}$ 表示Stella模型相似度所占权重，$simi_{Stella}(v_0, v_1)$ 表示Stella模型计算所得相似度（其他变量同理）。权重weight如何计算呢？根据之前计算的ratings的比较，主要分为以下三种情况：
+其中，$v_0$ 表示用户问题向量化结果，$v_1$ 表示数据集问题向量化结果，$weight_{Stella}$ 表示Stella模型相似度所占权重，$sim_{Stella}(v_0, v_1)$ 表示Stella模型计算所得相似度（其他变量同理）。权重weight如何计算呢？根据之前计算的ratings的比较，主要分为以下三种情况：
 
 1、当三个模型对于一个用户问题的判断均正确时，假定 $rating_{i, Stella}$ < $rating_{i, Gte}$ < $rating_{i, Dmeta}$ （i表示第i个用户问题）,则有（其他情况同理）
 
