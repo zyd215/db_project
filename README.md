@@ -173,13 +173,13 @@ $$ simi(v_0, v_1) = weight_{Stella} * simi_{Stella}(v_0, v_1) + weight_{Gte} * s
 
 其中，$v_0$表示用户问题向量化结果，$v_1$表示数据集问题向量化结果，$weight_{Stella}$表示Stella模型相似度所占权重，$simi_{Stella}(v_0, v_1)$表示Stella模型计算所得相似度（其他变量同理）。权重weight如何计算呢？根据之前计算的ratings的比较，主要分为以下三种情况：
 
-1、当三个模型对于一个用户问题的判断均正确时，假定$rating_{i, Stella}$ < $rating_{i, Gte}$ < $rating_{i, Dmeta}$（i表示第i个用户问题）,则有（其他情况同理）
+1、当三个模型对于一个用户问题的判断均正确时，假定$rating_{i, Stella} < rating_{i, Gte} < rating_{i, Dmeta}$（i表示第i个用户问题）,则有（其他情况同理）
 
 $$ 
 score_{i, Stella}=0, \ score_{i, Gte}=\frac{rating_{i, Gte} - rating_{i, Stella}}{rating_{i, Dmeta} - rating_{i, Stella}} rating_{i, Dmeta}, \  score_{i, Dmeta}=rating_{i, Dmeta}
 $$
 
-2、当其中一个模型判断错误，其他两个模型判断正确时，假定$rating_{i, Stella}=-1$，$rating_{i, Gte}$ < $rating_{i, Dmeta}$，则有
+2、当其中一个模型判断错误，其他两个模型判断正确时，假定$rating_{i, Stella}=-1, rating_{i, Gte} < rating_{i, Dmeta}$，则有
 
 $$ 
 score_{i, Stella}=-1, \  score_{i, Gte}=0, \  score_{i, Dmeta}=rating_{i, Dmeta}
@@ -191,13 +191,13 @@ $$
 score_{i, Stella}=rating_{i, Stella}, \ score_{i, Gte}=rating_{i, Gte}, \ score_{i, Dmeta}=rating_{i, Dmeta}
 $$ 
 
-取$score_{Stella} = max(aver(score_{Stella}), \ 0)$, $score_{Gte} = max(aver(score_{Gte}), \ 0)$, $score_{Dmeta} = max(aver(score_{Dmeta}), \ 0)$，以Stella权重的计算为例，权重计算如下：
+取$score_{Stella} = max(aver(score_{Stella}), \ 0), score_{Gte} = max(aver(score_{Gte}), \ 0), score_{Dmeta} = max(aver(score_{Dmeta}), \ 0)$，以Stella权重的计算为例，权重计算如下：
 
 $$
 weight_{Stella} = \frac{score_{Stella}}{score_{Stella}+score_{Gte}+score_{Dmeta}}
 $$
 
-最终计算得到 $weight_{Stella}=0.542$，$weight_{Gte}=0$，$weight_{Dmeta}=0.458$。
+最终计算得到 $weight_{Stella}=0.542, weight_{Gte}=0, weight_{Dmeta}=0.458$。
 
 ## 重排模型⛰️
 
