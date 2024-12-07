@@ -1,5 +1,5 @@
 *.md linguist-language=Python
 *.json linguist-language=Python
 *.txt linguist-language=Python
+*.xlsx linguist-language=Python
 *.py linguist-language=Python
-*.ipynb linguist-language=Python
