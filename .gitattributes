@@ -7,3 +7,5 @@
 *.sql linguist-language=Python
 *.uml linguist-language=Python 
 *.cmd linguist-language=Python
+*.py linguist-language=Python
+*.ipynb linguist-language=Python
