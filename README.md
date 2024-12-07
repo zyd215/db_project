@@ -16,6 +16,7 @@ project/
 │   ├── cmrc2018_train.json   # cmrc2018测试数据
 │   └── cmrc2018_trial.json   # cmrc2018训练数据
 │   └── ratings.xlsx   # 各向量模型在用户问题的评分
+│   └── test.xlsx  # 测试数据
 │   └── user_ques.xlsx   # 各向量模型在用户问题的评分
 │   └── word_count.xlsx   # 各向量模型在用户问题的评分
 │
@@ -27,9 +28,9 @@ project/
 │   └── read_xlsx.py  # 读取excel文件
 │
 ├── models/  # 存储模型权值文件
-│   └── Dmeta-embedding-zh/..  # Dmeta模型
-│   └── gte-base-zh/..  # Gte模型
-│   └── stella-base-zh-v2/..  # Stella模型
+│   └── Dmeta-embedding-zh/..  # Dmeta模型，需自行下载
+│   └── gte-base-zh/..  # Gte模型，需自行下载
+│   └── stella-base-zh-v2/..  # Stella模型，需自行下载
 │   └── weights.pkl  # 各模型相似度权重
 │
 ├── service/  # 主要业务
