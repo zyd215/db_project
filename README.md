@@ -116,7 +116,7 @@ $\textbf{写在前头}$：各向量模型的预设应用场景不一定完全契
 
 借助[MTEB](https://huggingface.co/spaces/mteb/leaderboard)中文预训练向量模型的评分排名，本文选取了映射维度为768的排名前三的不同模型模型，分别为[Dmeta-embedding-zh](https://huggingface.co/DMetaSoul/Dmeta-embedding-zh)、[gte-base-zh](https://huggingface.co/thenlper/gte-base-zh)和[stella-base-zh-v2](https://huggingface.co/infgrad/stella-base-zh-v2)。可点击蓝字链接在模型官网下载到models目录。本文通过计算两文本向量化结果的余弦相似度量化两文本的相似度，公式如下：
 
-$$ Similarity = \frac{\vec{v_a} \cdot \vec{v_b}}{\| \vec{v_a} \| \| \vec{v_b} \|} $$
+$$ similarity = \frac{\vec{v_a} \cdot \vec{v_b}}{\| \vec{v_a} \| \| \vec{v_b} \|} $$
 
 模型能否正确找出用户问题所对应的题库问题？这需要通过自定义数据集进行测试，可通过在[trial数据集](project\data\cmrc2018_trial.json)基础上修改语序、变换问法、多问句结合完成。示例如下：
 
@@ -130,7 +130,7 @@ $$ Similarity = \frac{\vec{v_a} \cdot \vec{v_b}}{\| \vec{v_a} \| \| \vec{v_b} \|
 如何对不同模型在自定义数据集上的表现进行评分呢？主要在于三方面，一是问题判断是否正确，二是若判断正确，自定义问题与原问题的相似度是否足够大，三是若判断正确，自定义用户问题与其他问题的相似度是否足够小。对此，对于每个预训练向量模型，建立评分模型如下：
 
 $$
-Rating = 
+rating = 
 \sum_{i=1}^{n}r_i(\alpha sim(v_0, v_1)- \frac{\beta}{K-1} {\textstyle \sum_{j=2}^{K}sim(v_0, v_j)}-(1-r_i))
 $$
 
